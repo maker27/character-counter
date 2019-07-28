@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Character Counter</title>
+	<style>
+		html, body{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		body{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		p, textarea{
+			display: flex;
+			width: 80%;
+			max-height: 300px;
+			max-width: 500px;
+			margin: 10px auto;
+			text-align: center;
+		}
+		#counter{
+			max-height: 100px;
+			flex-grow: 1;
+			font-size: 2em;
+			color: green;
+		}
+		#counter::before{
+			content: 'Всего символов: ';
+			margin-right: 0.5em;
+		}
+		#text{
+			flex-grow: 3;
+		}
+	</style>
+</head>
+<body>
+
+	<p id="counter"></p>
+
+	<textarea id="text"></textarea>
+
+	<script>
+		var textField = document.getElementById('text');
+		function calculateCount(){
+			document.getElementById('counter').innerText = textField.value.trim().length;
+		}
+		textField.onchange = calculateCount;
+		textField.oninput = calculateCount;
+		textField.onpaste = calculateCount;
+	</script>
+</body>
+</html>
